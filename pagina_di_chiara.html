@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Chiara — Photographer · Fashion · PR ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-50: #fdf2f8;
+            --pink-100: #fce7f3;
+            --pink-200: #fbcfe8;
+            --pink-300: #f9a8d4;
+            --pink-400: #f472b6;
+            --pink-500: #ec4899;
+            --pink-600: #db2777;
+            --pink-700: #be185d;
+            --pink-800: #9d174d;
+            --pink-900: #831843;
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+            --cream: #fefaf6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--pink-50);
+            color: var(--pink-900);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== FLOATING HEARTS BG ===== */
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            animation: floatUp linear infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes floatUp {
+            0%   { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10%  { opacity: 0.15; }
+            90%  { opacity: 0.15; }
+            100% { transform: translateY(-10vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 14px;
+            z-index: 9999;
+            animation: sparkleAnim 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0%   { transform: scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: scale(0) rotate(180deg) translateY(-30px); opacity: 0; }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(253, 242, 248, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(244, 114, 182, 0.15);
+            padding: 0 40px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(236, 72, 153, 0.1);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.6em;
+            color: var(--pink-600);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-logo:hover { color: var(--pink-500); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--pink-700);
+            font-weight: 600;
+            font-size: 0.9em;
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            background: var(--pink-200);
+            color: var(--pink-800);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--pink-600);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            background: linear-gradient(160deg, var(--pink-50) 0%, var(--pink-100) 30%, var(--pink-200) 60%, var(--pink-100) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(251, 207, 232, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(249, 168, 212, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(244, 114, 182, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: heroFadeIn 1.2s ease;
+        }
+
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-400), var(--pink-300), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+            margin: 0 auto 30px;
+            box-shadow: 0 12px 48px rgba(236, 72, 153, 0.35);
+            border: 5px solid white;
+            animation: avatarFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-12px); }
+        }
+
+        .hero-sparkle {
+            font-size: 1.2em;
+            letter-spacing: 12px;
+            margin-bottom: 12px;
+            animation: heroFadeIn 1.2s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5em;
+            color: var(--pink-700);
+            text-shadow: 2px 3px 6px rgba(190, 24, 93, 0.15);
+            margin-bottom: 12px;
+            animation: heroFadeIn 1.2s ease 0.3s both;
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3em;
+            color: var(--pink-500);
+            margin-bottom: 8px;
+            animation: heroFadeIn 1.2s ease 0.5s both;
+        }
+
+        .hero-roles {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+            animation: heroFadeIn 1.2s ease 0.7s both;
+        }
+
+        .role-badge {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--pink-200);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85em;
+            color: var(--pink-700);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .role-badge:hover {
+            background: var(--pink-400);
+            color: white;
+            border-color: var(--pink-400);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.4);
+        }
+
+        .hero-scroll {
+            margin-top: 50px;
+            animation: heroFadeIn 1.2s ease 0.9s both;
+        }
+
+        .hero-scroll a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--pink-500);
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 12px 28px;
+            border: 2px solid var(--pink-300);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-scroll a:hover {
+            background: var(--pink-500);
+            color: white;
+            border-color: var(--pink-500);
+        }
+
+        .scroll-arrow {
+            animation: bounceDown 1.5s ease-in-out infinite;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(5px); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2em;
+            color: var(--pink-700);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--pink-400);
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--pink-200), var(--pink-300), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 3px solid rgba(255,255,255,0.5);
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--pink-800);
+            margin-bottom: 6px;
+        }
+
+        .about-text .age-tag {
+            display: inline-block;
+            background: var(--pink-100);
+            color: var(--pink-600);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .about-text p {
+            font-size: 1.05em;
+            line-height: 1.9;
+            color: var(--pink-800);
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 18px 10px;
+            background: var(--pink-50);
+            border-radius: 16px;
+            border: 2px solid var(--pink-100);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.15);
+            border-color: var(--pink-300);
+        }
+
+        .stat-box .stat-icon {
+            font-size: 1.6em;
+            margin-bottom: 6px;
+        }
+
+        .stat-box .stat-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--pink-600);
+        }
+
+        .stat-box .stat-label {
+            font-size: 0.75em;
+            color: var(--pink-400);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SERVICES / WHAT I DO ===== */
+        .services {
+            background: linear-gradient(180deg, var(--pink-50), var(--pink-100));
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 36px 28px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.08);
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(236, 72, 153, 0.2);
+            border-color: var(--pink-300);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--pink-200), var(--pink-300));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.3em;
+            color: var(--pink-700);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.95em;
+            color: var(--pink-600);
+            line-height: 1.7;
+        }
+
+        /* ===== PORTFOLIO / GALLERY ===== */
+        .portfolio {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            background: linear-gradient(135deg, var(--pink-100), var(--pink-200), var(--pink-300));
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 16px 48px rgba(236, 72, 153, 0.25);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 40%, rgba(157, 23, 77, 0.85) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .gallery-overlay span {
+            color: var(--pink-200);
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* ===== EXPERIENCE TIMELINE ===== */
+        .experience {
+            background: linear-gradient(180deg, var(--pink-50), white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--pink-300), var(--pink-200), transparent);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: 36px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 14px;
+            top: 6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+            border: 4px solid var(--pink-50);
+            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+        }
+
+        .timeline-card {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(16px);
+            border-radius: 18px;
+            padding: 24px 28px;
+            border: 2px solid var(--pink-100);
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.15);
+            border-color: var(--pink-300);
+        }
+
+        .timeline-date {
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--pink-400);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            color: var(--pink-800);
+            margin-bottom: 4px;
+        }
+
+        .timeline-card .timeline-place {
+            font-size: 0.9em;
+            color: var(--pink-500);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card p {
+            font-size: 0.92em;
+            color: var(--pink-700);
+            line-height: 1.7;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills {
+            background: var(--pink-100);
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: var(--pink-700);
+            border: 2px solid var(--pink-200);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--pink-500);
+            color: white;
+            border-color: var(--pink-500);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+        }
+
+        .skill-tag .skill-emoji {
+            margin-right: 6px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: linear-gradient(160deg, var(--pink-700), var(--pink-600), var(--pink-500));
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-subtitle {
+            color: var(--pink-200);
+        }
+
+        .contact-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--pink-100);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: white;
+            color: var(--pink-600);
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn .btn-emoji {
+            font-size: 1.3em;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--pink-800);
+            color: var(--pink-200);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer-hearts {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+            animation: pulse 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50%      { transform: scale(1.1); }
+        }
+
+        .footer p {
+            font-size: 0.9em;
+            color: var(--pink-300);
+        }
+
+        .footer a {
+            color: var(--pink-300);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0; right: 0;
+                background: rgba(253, 242, 248, 0.97);
+                backdrop-filter: blur(24px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--pink-200);
+            }
+
+            .nav-links.open { display: flex; }
+
+            .nav-hamburger { display: flex; }
+
+            .hero h1 { font-size: 2.4em; }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-photo {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
+                aspect-ratio: 1;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .section-title { font-size: 1.8em; }
+
+            .navbar { padding: 0 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.9em; }
+            .hero-roles { gap: 8px; }
+            .role-badge { padding: 8px 16px; font-size: 0.75em; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Chiara ✿</a>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Chi sono</a></li>
+                <li><a href="#services">Cosa faccio</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Esperienza</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-avatar">📸</div>
+            <div class="hero-sparkle">✿ ❀ ✿ ❀ ✿</div>
+            <h1>Chiara</h1>
+            <p class="hero-tagline">Fotografa · Fashion Lover · PR</p>
+            <div class="hero-roles">
+                <span class="role-badge">📷 Fotografia</span>
+                <span class="role-badge">👗 Moda</span>
+                <span class="role-badge">🎀 Public Relations</span>
+            </div>
+            <div class="hero-scroll">
+                <a href="#about">Scopri di più <span class="scroll-arrow">↓</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="section-inner">
+            <h2 class="section-title reveal">💖 Chi sono</h2>
+            <p class="section-subtitle reveal">~ la ragazza dietro l'obiettivo ~</p>
+
+            <div class="about-grid reveal">
+                <div class="about-photo">👩‍🎨</div>
+                <div class="about-text">
+                    <h3>Ciao, sono Chiara!</h3>
+                    <span class="age-tag">✨ 20 anni</span>
+                    <p>
+                        Sono una ragazza di 20 anni con la passione per tutto ciò che è bello, 
+                        creativo e un po' rosa! 🌸 Studio <strong>fotografia</strong> e <strong>moda</strong>, 
+                        perché credo che ogni scatto racconti una storia e ogni outfit sia una forma d'arte.
+                    </p>
+                    <p>
+                        Di sera mi trasformo: lavoro come <strong>PR</strong> nelle discoteche più cool, 
+                        dove organizzo serate indimenticabili e creo connessioni tra le persone. 
+                        La mia energia? Contagiosa! 💃✨
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <div class="stat-icon">📸</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Scatti</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">🎉</div>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Serate</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">💕</div>
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Passione</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-inner">
+            <h2 class="section-title reveal">🎀 Cosa faccio</h2>
+            <p class="section-subtitle reveal">~ i miei talenti ~</p>
+
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">📷</div>
+                    <h3>Fotografia</h3>
+                    <p>Ritratti, eventi, moda e lifestyle. Ogni foto è un'emozione catturata per sempre nel tempo.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">👗</div>
+                    <h3>Moda & Style</h3>
+                    <p>Styling, outfit curation e trend spotting. La moda è il mio linguaggio preferito per esprimermi.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🪩</div>
+                    <h3>PR & Eventi</h3>
+                    <p>Organizzo serate, gestisco liste e creo esperienze uniche nelle migliori discoteche.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-inner">
+            <h2 class="section-title reveal">📸 Portfolio</h2>
+            <p class="section-subtitle reveal">~ alcuni dei miei lavori ~</p>
+
+            <div class="gallery-grid reveal">
+                <div class="gallery-item tall">
+                    <div class="gallery-placeholder">👗</div>
+                    <div class="gallery-overlay">
+                        <h4>Fashion Editorial</h4>
+                        <span>Moda & Styling</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌇</div>
+                    <div class="gallery-overlay">
+                        <h4>Golden Hour</h4>
+                        <span>Fotografia</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">💃</div>
+                    <div class="gallery-overlay">
+                        <h4>Night Vibes</h4>
+                        <span>Eventi & Nightlife</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌸</div>
+                    <div class="gallery-overlay">
+                        <h4>Spring Collection</h4>
+                        <span>Moda</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎤</div>
+                    <div class="gallery-overlay">
+                        <h4>Backstage</h4>
+                        <span>PR & Eventi</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">📸</div>
+                    <div class="gallery-overlay">
+                        <h4>Portraits</h4>
+                        <span>Ritratti</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">✨</div>
+                    <div class="gallery-overlay">
+                        <h4>Glamour Night</h4>
+                        <span>Nightlife</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <div class="section-inner">
+            <h2 class="section-title reveal">💼 Esperienza</h2>
+            <p class="section-subtitle reveal">~ il mio percorso ~</p>
+
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2025 — Presente</div>
+                        <h4>PR & Event Manager</h4>
+                        <div class="timeline-place">🪩 Discoteche & Club</div>
+                        <p>Gestione liste, organizzazione serate a tema, creazione di esperienze VIP e promozione sui social.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2024 — Presente</div>
+                        <h4>Studentessa di Fotografia</h4>
+                        <div class="timeline-place">📷 Accademia</div>
+                        <p>Studio delle tecniche fotografiche, composizione, editing e post-produzione con focus su moda e ritrattistica.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2024 — Presente</div>
+                        <h4>Fashion & Styling</h4>
+                        <div class="timeline-place">👗 Studi di Moda</div>
+                        <p>Approfondimento di storia della moda, trend forecasting, personal styling e fashion communication.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2023</div>
+                        <h4>Primi Progetti Fotografici</h4>
+                        <div class="timeline-place">🌟 Freelance</div>
+                        <p>Primi shooting, collaborazioni con amiche e piccoli brand locali. L'inizio di una passione senza limiti!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <div class="section-inner">
+            <h2 class="section-title reveal">⭐ Le mie skills</h2>
+            <p class="section-subtitle reveal">~ cosa so fare ~</p>
+
+            <div class="skills-cloud reveal">
+                <span class="skill-tag"><span class="skill-emoji">📷</span>Fotografia</span>
+                <span class="skill-tag"><span class="skill-emoji">🎨</span>Editing foto</span>
+                <span class="skill-tag"><span class="skill-emoji">👗</span>Styling</span>
+                <span class="skill-tag"><span class="skill-emoji">💄</span>Moda</span>
+                <span class="skill-tag"><span class="skill-emoji">🪩</span>Organizzazione eventi</span>
+                <span class="skill-tag"><span class="skill-emoji">📱</span>Social Media</span>
+                <span class="skill-tag"><span class="skill-emoji">🤝</span>Public Relations</span>
+                <span class="skill-tag"><span class="skill-emoji">💬</span>Comunicazione</span>
+                <span class="skill-tag"><span class="skill-emoji">🎬</span>Lightroom</span>
+                <span class="skill-tag"><span class="skill-emoji">✨</span>Photoshop</span>
+                <span class="skill-tag"><span class="skill-emoji">📐</span>Composizione</span>
+                <span class="skill-tag"><span class="skill-emoji">🌟</span>Creatività</span>
+                <span class="skill-tag"><span class="skill-emoji">💃</span>Nightlife</span>
+                <span class="skill-tag"><span class="skill-emoji">📸</span>Ritrattistica</span>
+                <span class="skill-tag"><span class="skill-emoji">🎀</span>Content Creation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="section-inner">
+            <h2 class="section-title reveal">💌 Contattami</h2>
+            <p class="section-subtitle reveal">~ parliamo! ~</p>
+
+            <p class="contact-text reveal">
+                Hai bisogno di una fotografa, vuoi uno styling pazzesco o vuoi che organizzi la tua prossima serata? Scrivimi! 💕
+            </p>
+
+            <div class="contact-links reveal">
+                <a href="mailto:chiara@email.com" class="contact-btn">
+                    <span class="btn-emoji">📧</span> Email
+                </a>
+                <a href="https://instagram.com" target="_blank" class="contact-btn">
+                    <span class="btn-emoji">📸</span> Instagram
+                </a>
+                <a href="https://tiktok.com" target="_blank" class="contact-btn">
+                    <span class="btn-emoji">🎵</span> TikTok
+                </a>
+                <a href="https://wa.me/" target="_blank" class="contact-btn">
+                    <span class="btn-emoji">💬</span> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-hearts">💗💕💗</div>
+        <p>© 2026 <a href="#">Chiara</a> — fatto con tanto amore 💌</p>
+        <p style="margin-top:4px; font-size:0.8em; color: var(--pink-400);">
+            fotografia · moda · pr · ✨ tutto rosa ✨
+        </p>
+    </footer>
+
+    <script>
+        // ===== FLOATING HEARTS =====
+        const heartsBg = document.getElementById('heartsBg');
+        const heartEmojis = ['💖', '💗', '💕', '🩷', '🌸', '✨', '🎀', '🦋', '❀', '✿'];
+
+        function createHeart() {
+            const heart = document.createElement('span');
+            heart.classList.add('heart');
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 18 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heartsBg.appendChild(heart);
+            setTimeout(() => heart.remove(), 18000);
+        }
+
+        for (let i = 0; i < 12; i++) setTimeout(createHeart, i * 400);
+        setInterval(createHeart, 1200);
+
+        // ===== SPARKLE TRAIL =====
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.88) {
+                const sparkle = document.createElement('span');
+                sparkle.classList.add('sparkle');
+                sparkle.textContent = ['✨', '💖', '⭐', '🌟', '💫'][Math.floor(Math.random() * 5)];
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            }
+        });
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== SMOOTH REVEAL STAGGER FOR GRID CHILDREN =====
+        const staggerContainers = document.querySelectorAll('.services-grid, .gallery-grid, .skills-cloud');
+        staggerContainers.forEach(container => {
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const children = container.children;
+                        Array.from(children).forEach((child, i) => {
+                            child.style.opacity = '0';
+                            child.style.transform = 'translateY(20px)';
+                            child.style.transition = `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1}s`;
+                            setTimeout(() => {
+                                child.style.opacity = '1';
+                                child.style.transform = 'translateY(0)';
+                            }, 50);
+                        });
+                        staggerObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            staggerObserver.observe(container);
+        });
+    </script>
+</body>
+</html>
+
